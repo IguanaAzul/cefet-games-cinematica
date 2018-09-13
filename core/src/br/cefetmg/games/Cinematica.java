@@ -44,6 +44,7 @@ public class Cinematica extends ApplicationAdapter {
     private Buscar buscar;
     private Vagar vagar;
     private Fugir fugir;
+    private Chegar chegar;
     private AlgoritmoMovimentacao algoritmoCorrente;
     private Array<AlgoritmoMovimentacao> algoritmos;
     private String stringAlgoritmoCorrente;
@@ -68,11 +69,14 @@ public class Cinematica extends ApplicationAdapter {
         // configura e registra os comportamentos disponíveis
         algoritmos = new Array<>();
         buscar = new Buscar(40);
+        chegar = new Chegar(40);
         buscar.alvo = objetivo;
         vagar = new Vagar(40, 2);
         fugir = new Fugir(40);
         fugir.alvo = buscar.alvo;
+        chegar.alvo = buscar.alvo;
         algoritmos.add(buscar);
+        algoritmos.add(chegar);
         algoritmos.add(vagar);
         algoritmos.add(fugir);
         algoritmoCorrente = vagar;
